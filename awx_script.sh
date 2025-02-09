@@ -3,7 +3,7 @@
 # Parametreleri al
 INPUT1=$1
 INPUT2=$2
-HOSTNAME=$(hostname)
+HOSTNAME=$(/bin/hostname)  # Tam yolu ile kullanıyoruz
 
 # Çıktıyı dosyaya yaz
 echo "Girdi 1: $INPUT1" > /tmp/script_output.txt
