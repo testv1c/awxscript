@@ -1,10 +1,10 @@
 #!/bin/bash
 
-# Parametreleri al
+# Kullanıcıdan gelen inputları al
 INPUT1=$1
 INPUT2=$2
 
-# Hostname alma yöntemi: Önce /etc/hostname, yoksa $HOSTNAME
+# Hostname alma: /etc/hostname veya $HOSTNAME kullan
 if [ -f /etc/hostname ]; then
     HOSTNAME=$(cat /etc/hostname)
 elif [ ! -z "$HOSTNAME" ]; then
@@ -13,13 +13,15 @@ else
     HOSTNAME="Hostname bulunamadı"
 fi
 
-# Çıktıyı dosyaya yaz
-echo "Girdi 1: $INPUT1" > /var/lib/awx/projects/script_output.txt
-echo "Girdi 2: $INPUT2" >> /var/lib/awx/projects/script_output.txt
-echo "Hostname: $HOSTNAME" >> /var/lib/awx/projects/script_output.txt
+# Çıktıyı kalıcı volume içine yaz
+OUTPUT_FILE="/var/lib/awx/projects/script_output.txt"
 
-# Çıktıyı ekrana yazdır (AWX içinde loglarda görünmesi için)
-cat /tmp/script_output.txt
+echo "Girdi 1: $INPUT1" > "$OUTPUT_FILE"
+echo "Girdi 2: $INPUT2" >> "$OUTPUT_FILE"
+echo "Hostname: $HOSTNAME" >> "$OUTPUT_FILE"
+
+# Çıktıyı ekrana yazdır (AWX loglarında görünsün)
+cat "$OUTPUT_FILE"
 
 # Çıkış yap
 exit 0
