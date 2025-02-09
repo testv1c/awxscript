@@ -3,7 +3,15 @@
 # Parametreleri al
 INPUT1=$1
 INPUT2=$2
-HOSTNAME=$(/bin/hostname)  # Tam yolu ile kullanıyoruz
+
+# Hostname alma yöntemi: Önce /etc/hostname, yoksa $HOSTNAME
+if [ -f /etc/hostname ]; then
+    HOSTNAME=$(cat /etc/hostname)
+elif [ ! -z "$HOSTNAME" ]; then
+    HOSTNAME=$HOSTNAME
+else
+    HOSTNAME="Hostname bulunamadı"
+fi
 
 # Çıktıyı dosyaya yaz
 echo "Girdi 1: $INPUT1" > /tmp/script_output.txt
