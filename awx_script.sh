@@ -14,7 +14,7 @@ else
 fi
 
 # Çıktıyı kalıcı volume içine yaz
-OUTPUT_FILE="/data/awx/projects/script_output.txt"
+OUTPUT_FILE="/var/lib/awx/projects/script_output.txt"
 
 echo "Girdi 1: $INPUT1" > "$OUTPUT_FILE"
 echo "Girdi 2: $INPUT2" >> "$OUTPUT_FILE"
