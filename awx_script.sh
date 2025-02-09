@@ -14,9 +14,9 @@ else
 fi
 
 # Çıktıyı dosyaya yaz
-echo "Girdi 1: $INPUT1" > /tmp/script_output.txt
-echo "Girdi 2: $INPUT2" >> /tmp/script_output.txt
-echo "Hostname: $HOSTNAME" >> /tmp/script_output.txt
+echo "Girdi 1: $INPUT1" > /var/lib/awx/projects/script_output.txt
+echo "Girdi 2: $INPUT2" >> /var/lib/awx/projects/script_output.txt
+echo "Hostname: $HOSTNAME" >> /var/lib/awx/projects/script_output.txt
 
 # Çıktıyı ekrana yazdır (AWX içinde loglarda görünmesi için)
 cat /tmp/script_output.txt
