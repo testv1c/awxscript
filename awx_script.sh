@@ -10,5 +10,8 @@ echo "Girdi 1: $INPUT1" > /tmp/script_output.txt
 echo "Girdi 2: $INPUT2" >> /tmp/script_output.txt
 echo "Hostname: $HOSTNAME" >> /tmp/script_output.txt
 
-# Bilgilendirme mesajı
-echo "Script çalıştırıldı ve bilgiler /tmp/script_output.txt dosyasına yazıldı."
+# Çıktıyı ekrana yazdır (AWX içinde loglarda görünmesi için)
+cat /tmp/script_output.txt
+
+# Çıkış yap
+exit 0
